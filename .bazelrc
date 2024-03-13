@@ -1,0 +1,12 @@
+build --incompatible_strict_action_env
+build --action_env BAZEL_DO_NOT_DETECT_CPP_TOOLCHAIN=1
+build --incompatible_enable_cc_toolchain_resolution
+
+build -c dbg
+build --strip never
+build --cache_test_results=no
+build --instrumentation_filter=^//
+build --experimental_use_llvm_covmap
+build --experimental_generate_llvm_lcov
+build --action_env BAZEL_USE_LLVM_NATIVE_COVERAGE=1
+build --combined_report lcov
